@@ -5,6 +5,7 @@ require 'json'
 require_relative 'secrets'
 require_relative 'models/stop'
 require_relative 'models/direction'
+require_relative 'models/route'
 
 DIRECTIONS = JSON.parse(File.read('static/directions.json'))
 ROUTES = JSON.parse(File.read('static/routes.json'))
@@ -20,7 +21,7 @@ helpers do
   def quick_find_stop(name)
     stops = Stop.find_by_name(name)
     stops.each do |stop|
-      return stop if stop.stop_name.start_with?(name)
+      return stop if stop.stop_name.downcase.start_with?(name.downcase)
     end
     stops[0]    
   end
@@ -46,7 +47,7 @@ end
 
 get '/stop/:id' do
   stop = Stop.from_id(params[:id])
-  departures = stop.departures
+  departures = stop.departures # TODO exec departures query from here
 
   erb :stop, locals: {stop: stop, departures: departures}
 end

@@ -1,5 +1,7 @@
 require 'date'
 
+require_relative 'route'
+
 class Departure < OpenStruct
   ROUTE_TYPE = 0 # 0 for metro trains
 
@@ -17,12 +19,20 @@ class Departure < OpenStruct
     scheduled_departure_utc
   end
 
+  def descriptor
+    "#{scheduled_departure_utc.localtime.strftime("%H%M")} #{direction.direction_name}"
+  end
+
+  def until_departure_english
+    "#{departure_utc.localtime.strftime("%H%M")} #{((departure_utc.localtime - Time.now) / 60.0).round} mins #{'(live)' if live?}"
+  end
+
   def live?
     !!self['estimated_departure_utc']
   end
 
   def route
-    Rotue.from_id(self.route_id)
+    Route.from_id(self.route_id)
   end
 
   def direction

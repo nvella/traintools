@@ -1,14 +1,35 @@
 <div class="page-header">
   <h1><%= stop.stop_name %></h1>
   <hr/>
-  <h2>Departures</h2>
-  <% departures.each_slice(4) do |slice| %>
-  <div class="row">
-    <% slice.each do |dep| %>
-    <div class="col-md-3">
-      <%= h dep %>
-    </div>
-    <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div><b>Stop ID: </b><%= stop.stop_id %></div>
+    <div><b><%= stop.station_type %></b></div>
+    <hr />
   </div>
-  <% end %>
+  <div class="col-md-9">
+    <h2>Departures</h2>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Run</th>
+          <th scope="col">Platform</th>
+          <th scope="col">Est. Departure</th>
+          <th scope="col">Route</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% departures.each do |departure| %>
+        <tr>
+          <th scope="row"><a href="/run/<%= departure.run_id %>"><%= departure.descriptor %></a></th>
+          <td><%= departure.platform_number %></td>
+          <td><%= departure.until_departure_english %></td>
+          <td><%= departure.route.route_name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
