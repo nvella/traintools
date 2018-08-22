@@ -1,0 +1,14 @@
+<div class="page-header">
+  <h1><%= stop.stop_name %></h1>
+  <hr/>
+  <h2>Departures</h2>
+  <% departures.each_slice(4) do |slice| %>
+  <div class="row">
+    <% slice.each do |dep| %>
+    <div class="col-md-3">
+      <%= h dep %>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
