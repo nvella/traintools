@@ -4,7 +4,7 @@ require_relative 'route'
 require_relative 'run'
 
 class Departure < OpenStruct
-  attr_writer :run
+  attr_writer :run, :stop
 
   ROUTE_TYPE = 0 # 0 for metro trains
 
@@ -47,8 +47,16 @@ class Departure < OpenStruct
     Run.from_id(run_id)
   end
 
+  def stop
+    return @stop if @stop
+    Stop.from_id(stop_id)
+  end
+
   def self.find(stop_id, params={})
+    max_results = params[:max_results]
+
     res = $ptv.departures(ROUTE_TYPE, stop_id, params)
+
     departures = res['departures'].map {|dep| self.new(dep)}
     runs = res['runs'].map {|id, run| [id, Run.new(run)]}.to_h
 
@@ -59,6 +67,7 @@ class Departure < OpenStruct
       end
     end
 
+    return departures[0...max_results] if max_results
     departures
   end
 end

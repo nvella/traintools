@@ -1,7 +1,39 @@
-<form class="home-form" action="/" method="post">
-  <input class="form-control" placeholder="Enter stop name" name="stop">
-  <button type="submit" class="btn btn-primary">Go</button>
-  <% if info %>
-    <p><%= info %></p>
-  <% end %>
-</form>
+<div class="row" style="margin-bottom: 20px;">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form class="home-form" action="/" method="post">
+      <input class="form-control" placeholder="Enter stop name" name="stop">
+      <button type="submit" class="btn btn-primary">Go</button>
+      <% if info %>
+        <p><%= info %></p>
+      <% end %>
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        Quick Links
+      </div>
+      <div class="card-body">
+        <div class="quick-links">
+          <a href="/stop/1071"><span>Flinders Street Station</span></a>
+          <a href="/stop/1181"><span>Southern Cross</span></a>
+          <a href="/stop/1068"><span>Flagstaff</span></a>
+          <a href="/stop/1120"><span>Melbourne Central</span></a>
+          <a href="/stop/1155"><span>Parliament</span></a>
+          <a href="/stop/1162"><span>Richmond</span></a>
+          <a href="/stop/1104"><span>Jolimont</span></a>
+          <a href="/stop/1144"><span>North Melbourne</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+  </div>
+</div>

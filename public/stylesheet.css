@@ -1,9 +1,5 @@
 .home-form {
-  max-width: 400px;
-  height: 80px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
+  width: 100%;
 }
 
 .home-form > button {
@@ -22,4 +18,10 @@
 
 .wrap-text {
   word-wrap: break-word;
+}
+
+.quick-links > a {
+  word-wrap: nowrap;
+  white-space: nowrap;
+  margin-right: 10px;
 }

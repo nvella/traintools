@@ -53,3 +53,10 @@ get '/stop/:id' do
 
   erb :stop, locals: {stop: stop, departures: departures}
 end
+
+get '/run/:id' do
+  run = Run.from_id(params[:id])
+  pattern = run.pattern
+  
+  erb :run, locals: {run: run, pattern: pattern}
+end

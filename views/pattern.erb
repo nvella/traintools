@@ -1,0 +1,18 @@
+<table class="table table-sm wrap-text">
+  <thead>
+    <tr>
+      <th scope="col">Stop</th>
+      <th scope="col">Timetable</th>
+      <th scope="col">Est.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% pattern.departures.each do |dep| %>
+    <tr>
+      <td><%= dep.stop.stop_name %></td>
+      <td><%= dep.scheduled_departure_utc.localtime.strftime("%H%M") %></td>
+      <td><%= dep.until_departure_english %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
