@@ -12,6 +12,6 @@ class Stop < OpenStruct
   end
 
   def departures
-    Departure.find(stop_id, look_backwards: false, max_results: 25).sort_by {|dep| dep.departure_utc.to_i}
+    Departure.find(stop_id, look_backwards: false, max_results: 25, expand: 'run').sort_by {|dep| dep.departure_utc.to_i}
   end
 end

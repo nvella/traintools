@@ -49,7 +49,7 @@ end
 
 get '/stop/:id' do
   stop = Stop.from_id(params[:id])
-  departures = stop.departures # TODO exec departures query from here
+  departures = stop.departures
 
   erb :stop, locals: {stop: stop, departures: departures}
 end

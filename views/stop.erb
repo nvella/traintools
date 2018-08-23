@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1><%= stop.stop_name %></h1>
+  <h1><%= stop.stop_name %><span class="subtitle">ID: <%= stop.stop_id%></span></h1>
   <hr/>
 </div>
 
@@ -14,11 +14,11 @@
   </div>
   <div class="col-md-9">
     <h2>Departures</h2>
-    <table class="table table-sm">
+    <table class="table table-responsive table-sm wrap-text">
       <thead>
         <tr>
           <th scope="col">Run</th>
-          <th scope="col">Platform</th>
+          <th scope="col">Pl.</th>
           <th scope="col">Est. Departure</th>
           <th scope="col">Route</th>
         </tr>

@@ -14,3 +14,12 @@
 .content {
   margin-top: 20px;
 }
+
+.subtitle {
+  color: grey;
+  font-size: 12pt;
+}
+
+.wrap-text {
+  word-wrap: break-word;
+}
