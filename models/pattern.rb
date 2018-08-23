@@ -23,9 +23,7 @@ class Pattern
       p dep.inspect
       dep.stop = pattern.stops[dep.stop_id] if pattern.stops.has_key? dep.stop_id
     end
-
-    p pattern.stops
-
+    
     pattern
   end
 end

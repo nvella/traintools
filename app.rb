@@ -58,5 +58,10 @@ get '/run/:id' do
   run = Run.from_id(params[:id])
   pattern = run.pattern
   
-  erb :run, locals: {run: run, pattern: pattern}
+  # Generate title
+  first_stop = pattern.departures.first.stop.stop_name
+  last_stop = pattern.departures.last.stop.stop_name
+  title = "#{pattern.departures.first.scheduled_departure_utc.localtime.strftime("%H%M")} #{first_stop} to #{last_stop}"
+
+  erb :run, locals: {run: run, pattern: pattern, title: title}
 end
