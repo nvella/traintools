@@ -3,26 +3,32 @@
   <hr/>
 </div>
 
-<h2>Stopping Pattern</h2>
-<table class="table table-sm wrap-text">
-  <thead>
-    <tr>
-      <th scope="col">Stop</th>
-      <th scope="col">Timetable</th>
-      <th scope="col">Est.</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% prev_departed = true %>
-    <% pattern.departures.each do |dep| %>
-    <tr 
-      class="<% if !dep.departed? && prev_departed %>run-next-departure<% end %>"
-    >
-      <% prev_departed = dep.departed? %>
-      <td><a href="/stop/<%= dep.stop_id %>"><%= dep.stop.stop_name %></a></td>
-      <td><%= dep.scheduled_departure_utc.localtime.strftime("%H%M") %></td>
-      <td><%= dep.until_departure_english %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Stopping Pattern</h2>
+    <table class="table table-sm wrap-text">
+      <thead>
+        <tr>
+          <th scope="col">Stop</th>
+          <th scope="col">Pl.</th>
+          <th scope="col">Timetable</th>
+          <th scope="col">Est.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% prev_departed = true %>
+        <% pattern.departures.each do |dep| %>
+        <tr 
+          class="<% if !dep.departed? && prev_departed %>run-next-departure<% end %>"
+        >
+          <% prev_departed = dep.departed? %>
+          <td><a href="/stop/<%= dep.stop_id %>"><%= dep.stop.stop_name %></a></td>
+          <td><%= dep.platform_number %></td>
+          <td><%= dep.scheduled_departure_utc.localtime.strftime("%H%M") %></td>
+          <td><%= dep.until_departure_english %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

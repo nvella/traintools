@@ -1,4 +1,5 @@
 require_relative 'pattern'
+require_relative 'route'
 
 class Run < OpenStruct
   ROUTE_TYPE = 0
@@ -9,5 +10,9 @@ class Run < OpenStruct
 
   def pattern
     Pattern.from_id(self.run_id)
+  end
+
+  def route
+    Route.from_id(self.route_id)
   end
 end
