@@ -4,7 +4,15 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-2">
+    <div><b>Tools</b></div>
+    <div class="btn-group-vertical run-tools">
+      <a href="<%= run.run_id %>/prev_svc" class="btn btn-outline-primary link-btn"><i class="material-icons align-middle">skip_previous</i><span class="align-middle">Prev. Service</span></a>
+      <a href="<%= run.run_id %>/next_svc" class="btn btn-outline-primary link-btn"><i class="material-icons align-middle">skip_next</i><span class="align-middle">Next Service</span></a>
+    </div>
+    <hr/>
+  </div>
+  <div class="col-md-10">
     <h2>Stopping Pattern</h2>
     <table class="table table-sm wrap-text">
       <thead>
@@ -16,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <% prev_departed = true %>
+        <% prev_departed = false %>
         <% pattern.departures.each do |dep| %>
         <tr 
           class="<% if !dep.departed? && prev_departed %>run-next-departure<% end %>"

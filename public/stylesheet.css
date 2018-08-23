@@ -37,3 +37,20 @@
 .nav-search-bar {
   margin-left: auto;
 }
+
+.run-tools {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.run-tools > .btn {
+  white-space: nowrap;
+}
+
+.link-btn > * {
+  color: #007bff;
+}
+
+.link-btn:hover > * {
+  color: white;
+}
