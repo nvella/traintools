@@ -1,0 +1,16 @@
+.home-form {
+  max-width: 400px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.home-form > button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.content {
+  margin-top: 20px;
+}

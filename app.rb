@@ -2,7 +2,9 @@ require 'sinatra'
 require 'ruby_ptv'
 require 'json'
 
-require_relative 'secrets'
+PTV_ID = ENV['PTV_ID']
+PTV_SECRET = ENV['PTV_SECRET']
+
 require_relative 'models/stop'
 require_relative 'models/direction'
 require_relative 'models/route'
