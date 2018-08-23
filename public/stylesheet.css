@@ -25,3 +25,11 @@
   white-space: nowrap;
   margin-right: 10px;
 }
+
+.run-departed > * {
+  font-style: italic;
+}
+
+.run-next-departure {
+  border-top: 2px solid #00a4d8;
+}

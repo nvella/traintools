@@ -3,6 +3,7 @@
   <hr/>
 </div>
 
+<h2>Stopping Pattern</h2>
 <table class="table table-sm wrap-text">
   <thead>
     <tr>
@@ -12,8 +13,12 @@
     </tr>
   </thead>
   <tbody>
+    <% prev_departed = true %>
     <% pattern.departures.each do |dep| %>
-    <tr>
+    <tr 
+      class="<% if !dep.departed? && prev_departed %>run-next-departure<% end %>"
+    >
+      <% prev_departed = dep.departed? %>
       <td><%= dep.stop.stop_name %></td>
       <td><%= dep.scheduled_departure_utc.localtime.strftime("%H%M") %></td>
       <td><%= dep.until_departure_english %></td>

@@ -34,6 +34,10 @@ class Departure < OpenStruct
     !!self['estimated_departure_utc']
   end
 
+  def departed?
+    (departure_utc.localtime - Time.now) < 0
+  end
+
   def route
     Route.from_id(self.route_id)
   end
