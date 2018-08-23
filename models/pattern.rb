@@ -11,6 +11,13 @@ class Pattern
     @runs = {} # Runs referenced by this pattern
   end
 
+  def descriptor
+    # Generate title
+    first_stop = @departures.first.stop.stop_name
+    last_stop = @departures.last.stop.stop_name
+    "#{@departures.first.scheduled_departure_utc.localtime.strftime("%H%M")} #{first_stop} to #{last_stop}"
+  end
+
   def self.from_id(id, params = {expand: 'all'})
     pattern = Pattern.new
     
@@ -23,7 +30,7 @@ class Pattern
       p dep.inspect
       dep.stop = pattern.stops[dep.stop_id] if pattern.stops.has_key? dep.stop_id
     end
-    
+
     pattern
   end
 end
