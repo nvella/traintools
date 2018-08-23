@@ -26,7 +26,7 @@
       <tbody>
         <% departures.each do |departure| %>
         <tr>
-          <th scope="row"><a href="/run/<%= departure.run_id %>"><%= departure.descriptor %></a></th>
+          <td><a href="/run/<%= departure.run_id %>"><%= departure.descriptor %></a></td>
           <td><%= departure.platform_number %></td>
           <td><%= departure.until_departure_english %></td>
           <td><%= departure.route.route_name %></td>
