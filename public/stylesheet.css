@@ -33,3 +33,7 @@
 .run-next-departure {
   border-top: 2px solid #007bff;
 }
+
+.nav-search-bar {
+  margin-left: auto;
+}
