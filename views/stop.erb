@@ -5,8 +5,11 @@
 
 <div class="row">
   <div class="col-md-3">
-    <div><b>Stop ID: </b><%= stop.stop_id %></div>
     <div><b><%= stop.station_type %></b></div>
+    <div>
+      <b>GPS: </b><a href="https://maps.google.com.au/maps?q=<%= stop.stop_location['gps']['latitude'] %>,<%= stop.stop_location['gps']['longitude'] %>"><%= stop.stop_location['gps']['latitude'] %>,&nbsp;<%= stop.stop_location['gps']['longitude'] %></a>
+    </div>
+    <%= erb :_pretty_hash, locals: {hash: {stop_amenities: stop.stop_amenities, stop_accessibility: stop.stop_accessibility}}%>
     <hr />
   </div>
   <div class="col-md-9">

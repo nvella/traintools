@@ -8,7 +8,7 @@ class Stop < OpenStruct
   end
 
   def self.from_id(id)
-    self.new($ptv.stop(id, ROUTE_TYPE))
+    self.new($ptv.stop(id, ROUTE_TYPE, stop_location: true, stop_amenities: true, stop_accessibility: true, stop_contact: true, stop_ticket: true))
   end
 
   def departures

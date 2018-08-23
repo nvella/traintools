@@ -1,0 +1,13 @@
+<% hash.each do |key, value| %>
+  <div>
+    <% pretty_key = key.to_s.split('_').map {|word| word.capitalize}.join(' ') %>
+    <b><%= pretty_key %>: </b>
+    <% if value.is_a?(Hash) %>
+      <div style="margin-left: 5px;">
+        <%= erb :_pretty_hash, locals: {hash: value} %>
+      </div>
+    <% else %>
+      <%= value %>
+    <% end %>
+    </div>
+<% end %>
