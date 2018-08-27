@@ -60,3 +60,14 @@ get '/run/:id' do
   
   erb :run, locals: {run: run, pattern: pattern}
 end
+
+get '/run/:id/next_svc' do
+  run = Run.from_id(params[:id])
+  next_svc_id = run.next_service_id
+
+  if next_svc_id.nil?
+    erb :error, locals: {msg: 'Next service not found', back: "/run/#{params[:id]}"}
+  else
+    redirect to("/run/#{next_svc_id}")
+  end
+end

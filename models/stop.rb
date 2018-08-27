@@ -11,7 +11,8 @@ class Stop < OpenStruct
     self.new($ptv.stop(id, ROUTE_TYPE, stop_location: true, stop_amenities: true, stop_accessibility: true, stop_contact: true, stop_ticket: true))
   end
 
-  def departures
-    Departure.find(stop_id, look_backwards: false, max_results: 25, expand: 'run').sort_by {|dep| dep.departure_utc.to_i}
+  def departures(params={})
+    default_params = {look_backwards: false, max_results: 25, expand: 'run'}
+    Departure.find(stop_id, default_params.merge(params)).sort_by {|dep| dep.departure_utc.to_i}
   end
 end
