@@ -3,7 +3,8 @@ require_relative 'route'
 
 class Run < OpenStruct
   ROUTE_TYPE = 0
-  NEXT_SERVICE_TIME_TOLERANCE = 60 * 2 # 2 MINUTES
+  NEXT_SERVICE_TIME_TOLERANCE_BACKWARDS = 60 * 2 # 2 MINUTES
+  NEXT_SERVICE_TIME_TOLERANCE_FORWARDS = 60 * 15 # 15 MINUTES
 
   def self.from_id(id)
     self.new($ptv.run_for_run_id_and_route_type(id, ROUTE_TYPE))
@@ -28,10 +29,8 @@ class Run < OpenStruct
     departures_at_last = Departure.find(last_departure.stop_id, {
       platform_numbers: [last_departure.platform_number],
       look_backwards: false
-    })
-    
-    departures_at_last = departures_at_last.select {|dep| dep.scheduled_departure_utc > (last_departure.scheduled_departure_utc - NEXT_SERVICE_TIME_TOLERANCE) && 
-        dep.scheduled_departure_utc < (last_departure.scheduled_departure_utc + NEXT_SERVICE_TIME_TOLERANCE)}
+    }).select {|dep| dep.scheduled_departure_utc > (last_departure.scheduled_departure_utc - NEXT_SERVICE_TIME_TOLERANCE_BACKWARDS) && 
+        dep.scheduled_departure_utc < (last_departure.scheduled_departure_utc + NEXT_SERVICE_TIME_TOLERANCE_FORWARDS)}
       .sort_by {|dep| dep.departure_utc.to_i}
 
     return nil if departures_at_last.empty?
